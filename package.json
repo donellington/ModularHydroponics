@@ -1,38 +1,40 @@
 {
-  "name": "mern-auth",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "name": "rn",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "start": "node server.js",
-    "server": "nodemon server.js",
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client "
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint ."
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "axios": "^0.21.1",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "classnames": "^2.3.1",
-    "concurrently": "^6.2.0",
-    "express": "^4.17.1",
-    "is-empty": "^1.2.0",
-    "jsonwebtoken": "^8.5.1",
-    "jwt-decode": "^3.1.2",
-    "mongoose": "^5.12.11",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "react-redux": "^7.2.4",
-    "react-router-dom": "^5.2.0",
-    "redux": "^4.1.0",
-    "redux-thunk": "^2.3.0",
-    "validator": "^13.6.0"
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.7.3",
+    "@react-navigation/stack": "^5.9.2",
+    "react": "16.13.1",
+    "react-native": "0.63.2",
+    "react-native-elements": "^2.2.1",
+    "react-native-gesture-handler": "^1.7.0",
+    "react-native-reanimated": "^1.13.0",
+    "react-native-safe-area-context": "^3.1.6",
+    "react-native-screens": "^2.10.1",
+    "react-native-vector-icons": "^7.0.0",
+    "realm": "^10.2.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "@babel/core": "7.11.4",
+    "@babel/runtime": "7.11.2",
+    "@react-native-community/eslint-config": "1.1.0",
+    "babel-jest": "25.5.1",
+    "eslint": "6.8.0",
+    "eslint-plugin-react": "^7.21.2",
+    "jest": "25.5.4",
+    "metro-react-native-babel-preset": "0.59.0",
+    "react-test-renderer": "16.13.1"
+  },
+  "jest": {
+    "preset": "react-native"
   }
 }
