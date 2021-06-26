@@ -1,55 +1,185 @@
-import React from "react";
-import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 
+
+// React Navigation Drawer with Sectioned Menu Options & Footer
+// https://aboutreact.com/navigation-drawer-sidebar-menu-with-sectioned-menu-options-footer/
+
+import 'react-native-gesture-handler';
 import { AuthProvider } from "./providers/AuthProvider";
-import { TasksProvider } from "./providers/TasksProvider";
 
-import { WelcomeView } from "./views/WelcomeView";
-import { ProjectsView } from "./views/ProjectsView";
-import { TasksView } from "./views/TasksView";
+import * as React from 'react';
+import {View, TouchableOpacity, Image} from 'react-native';
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+
+import FirstPage from './views/FirstPage';
+import SecondPage from './views/SecondPage';
+import ThirdPage from './views/ThirdPage';
+
+import WelcomeView from './views/WelcomeView';
 import { Logout } from "./components/Logout";
 
-const Stack = createStackNavigator();
+// Import Custom Sidebar
+import CustomSidebarMenu from './components/CustomSidebarMenu';
 
-const App = () => {
+const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+
+const NavigationDrawerStructure = (props) => {
+  //Structure for the navigatin Drawer
+  const toggleDrawer = () => {
+    //Props to open/close the drawer
+    props.navigationProps.toggleDrawer();
+  };
+
   return (
-    <AuthProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Welcome View"
-            component={WelcomeView}
-            options={{ title: "Task Tracker" }}
-          />
-          <Stack.Screen
-            name="Projects"
-            component={ProjectsView}
-            title="ProjectsView"
-            headerBackTitle="log out"
-            options={{
-              headerLeft: function Header() {
-                return <Logout />;
-              },
-            }}
-          />
-          <Stack.Screen name="Task List">
-            {(props) => {
-              const { navigation, route } = props;
-              const { user, projectPartition } = route.params;
-              return (
-                <TasksProvider user={user} projectPartition={projectPartition}>
-                  <TasksView navigation={navigation} route={route} />
-                </TasksProvider>
-              );
-            }}
-          </Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
-    </AuthProvider>
+    <View style={{flexDirection: 'row'}}>
+      <TouchableOpacity onPress={toggleDrawer}>
+        {/*Donute Button Image */}
+        <Image
+          source={{
+            uri:
+              'https://raw.githubusercontent.com/AboutReact/sampleresource/master/drawerWhite.png',
+          }}
+          style={{width: 25, height: 25, marginLeft: 5}}
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
+
+function firstScreenStack({navigation}) {
+  return (
+    <AuthProvider>
+    <Stack.Navigator initialRouteName="WelcomeView">
+      <Stack.Screen
+        name="WelcomeView"
+        component={WelcomeView}
+        options={{
+          drawerLockMode: 'locked-closed',
+          title: 'Hydroponics Helper', //Set Header Title
+          headerLeft: () => (
+            null
+          ),
+          headerStyle: {
+            backgroundColor: '#32cd32', //Set Header color
+          },
+          headerTintColor: '#fff', //Set Header text color
+          headerTitleStyle: {
+            fontWeight: 'bold', //Set Header text style
+          },
+        }}
+      />
+    </Stack.Navigator>
+  </AuthProvider>
+  );
+}
+
+function secondScreenStack({navigation}) {
+  return (
+    <AuthProvider>
+    <Stack.Navigator
+      initialRouteName="SecondPage"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
+        headerRight: () => (
+                 <Logout />
+         ),
+        headerStyle: {
+          backgroundColor: '#32cd32', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="SecondPage"
+        component={SecondPage}
+        options={{
+          title: 'Recipe Searching', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  </AuthProvider>
+  );
+}
+
+function thirdScreenStack({navigation}) {
+  return (
+  <AuthProvider>
+    <Stack.Navigator
+      initialRouteName="ThirdPage"
+      screenOptions={{
+        headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
+        headerRight: () => (
+                 <Logout />
+         ),
+        headerStyle: {
+          backgroundColor: '#32cd32', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="ThirdPage"
+        component={ThirdPage}
+        options={{
+          title: 'Settings', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  </AuthProvider>
+  );
+}
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator
+        // For setting Custom Sidebar Menu
+        drawerContent={(props) => <CustomSidebarMenu {...props} />}>
+        <Drawer.Screen
+          name="WelcomeView"
+          options={{
+            drawerLabel: 'Welcome Page',
+            drawerLockMode: 'locked-closed',
+            // Section/Group Name
+            groupName: 'Authentication',
+            activeTintColor: '#e91e63',
+          }}
+          component={firstScreenStack}
+        />
+        <Drawer.Screen
+          name="SecondPage"
+          options={{
+            drawerLabel: 'Recipe Searching',
+            // Section/Group Name
+            groupName: 'Dashboard',
+            activeTintColor: '#e91e63',
+          }}
+          component={secondScreenStack}
+        />
+        <Drawer.Screen
+          name="ThirdPage"
+          options={{
+            drawerLabel: 'Settings',
+            // Section/Group Name
+            groupName: 'Dashboard',
+            activeTintColor: '#32cd32',
+          }}
+          component={thirdScreenStack}
+        />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;

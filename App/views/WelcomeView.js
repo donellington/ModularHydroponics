@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, Alert } from "react-native";
 import { useAuth } from "../providers/AuthProvider";
 import styles from "../stylesheet";
+// import {navigation} from 'react-native-navigation';
 
-export function WelcomeView({ navigation }) {
+// export function WelcomeViews()
+
+const WelcomeView  = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { user, signUp, signIn } = useAuth();
@@ -11,7 +14,7 @@ export function WelcomeView({ navigation }) {
   useEffect(() => {
     // If there is a user logged in, go to the Projects page.
     if (user != null) {
-      navigation.navigate("Projects");
+      navigation.navigate("SecondPage");
     }
   }, [user]);
 
@@ -39,7 +42,7 @@ export function WelcomeView({ navigation }) {
 
   return (
     <View>
-      <Text>Signup or Signin:</Text>
+      <Text>Signup or Sign in:</Text>
       <View style={styles.inputContainer}>
         <TextInput
           onChangeText={setEmail}
@@ -58,8 +61,18 @@ export function WelcomeView({ navigation }) {
           secureTextEntry
         />
       </View>
-      <Button onPress={onPressSignIn} title="Sign In" />
-      <Button onPress={onPressSignUp} title="Sign Up" />
+      <Button 
+      onPress={onPressSignIn} 
+      title="Sign In"
+      color="#6b8e23"
+       />
+      <Button 
+      onPress={onPressSignUp} 
+      title="Sign Up"
+      color="#6b8e23"
+       />
     </View>
   );
 }
+
+export default WelcomeView;

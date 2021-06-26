@@ -17,7 +17,7 @@ export function Logout() {
             style: "destructive",
             onPress: () => {
               signOut();
-              navigation.popToTop();
+              navigation.navigate("WelcomeView");
             },
           },
           { text: "Cancel", style: "cancel" },
