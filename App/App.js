@@ -2,7 +2,7 @@
 
 // React Navigation Drawer with Sectioned Menu Options & Footer
 // https://aboutreact.com/navigation-drawer-sidebar-menu-with-sectioned-menu-options-footer/
-
+// To run this app just cd app => npm install => npx react-native run-android
 import 'react-native-gesture-handler';
 import { AuthProvider } from "./providers/AuthProvider";
 
@@ -16,6 +16,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import FirstPage from './views/FirstPage';
 import SecondPage from './views/SecondPage';
 import ThirdPage from './views/ThirdPage';
+import Recipes from './views/Recipes';
 
 import WelcomeView from './views/WelcomeView';
 import { Logout } from "./components/Logout";
@@ -49,6 +50,7 @@ const NavigationDrawerStructure = (props) => {
   );
 };
 
+// welcome page login
 function firstScreenStack({navigation}) {
   return (
     <AuthProvider>
@@ -58,7 +60,7 @@ function firstScreenStack({navigation}) {
         component={WelcomeView}
         options={{
           drawerLockMode: 'locked-closed',
-          title: 'Hydroponics Helper', //Set Header Title
+          title: 'WelcomeView', //Set Header Title
           headerLeft: () => (
             null
           ),
@@ -76,11 +78,12 @@ function firstScreenStack({navigation}) {
   );
 }
 
+// recipe page navigation
 function secondScreenStack({navigation}) {
   return (
     <AuthProvider>
     <Stack.Navigator
-      initialRouteName="SecondPage"
+      initialRouteName="Recipes"
       screenOptions={{
         headerLeft: () => (
           <NavigationDrawerStructure navigationProps={navigation} />
@@ -97,8 +100,8 @@ function secondScreenStack({navigation}) {
         },
       }}>
       <Stack.Screen
-        name="SecondPage"
-        component={SecondPage}
+        name="Recipes"
+        component={Recipes}
         options={{
           title: 'Recipe Searching', //Set Header Title
         }}
@@ -108,6 +111,7 @@ function secondScreenStack({navigation}) {
   );
 }
 
+//settings page unfinished
 function thirdScreenStack({navigation}) {
   return (
   <AuthProvider>
@@ -158,7 +162,7 @@ function App() {
           component={firstScreenStack}
         />
         <Drawer.Screen
-          name="SecondPage"
+          name="Recipes"
           options={{
             drawerLabel: 'Recipe Searching',
             // Section/Group Name

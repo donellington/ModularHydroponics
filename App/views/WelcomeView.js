@@ -14,7 +14,7 @@ const WelcomeView  = ({navigation}) => {
   useEffect(() => {
     // If there is a user logged in, go to the Projects page.
     if (user != null) {
-      navigation.navigate("SecondPage");
+      navigation.navigate("Recipes");
     }
   }, [user]);
 
