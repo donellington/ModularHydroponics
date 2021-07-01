@@ -8,12 +8,11 @@ class Landing extends Component {
         <div className="row">
           <div className="col s12 center-align">
             <h4>
-              <b>Wow</b> this app is {" "}
-              <span style={{ fontFamily: "monospace" }}>cool</span> 
+              Welcome to Hydroponics Guider!
             </h4>
-            <p className="flow-text grey-text text-darken-1">
+            {/* <p className="flow-text grey-text text-darken-1">
               Sublte message goes here
-            </p>
+            </p> */}
             <br />
             <div className="col s6">
               <Link

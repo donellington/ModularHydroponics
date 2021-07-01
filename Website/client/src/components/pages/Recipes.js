@@ -4,8 +4,10 @@ import Axios from "axios";
 import { v4 as uuidv4 } from "uuid";
 import RecipeSearch from "../RecipeSearch";
 import Alert from "../Alert";
+// import "./App.css";
 
-function Products() {
+
+function Recipes() {
   const [query, setQuery] = useState("");
   const [recipes, setRecipes] = useState([]);
   const [alert, setAlert] = useState("");
@@ -37,8 +39,8 @@ function Products() {
   };
 
   return (
-    <div className="App">
-      <h1>Recipe Searching *Chef's Kiss*</h1>
+    <div className="Recipe">
+      <h1>Recipe Searching</h1>
       <form onSubmit={onSubmit} className="search-form">
         {alert !== "" && <Alert alert={alert} />}
         <input
@@ -59,4 +61,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default Recipes;
