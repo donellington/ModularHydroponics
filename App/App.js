@@ -17,12 +17,14 @@ import FirstPage from './views/FirstPage';
 import SecondPage from './views/SecondPage';
 import ThirdPage from './views/ThirdPage';
 import Recipes from './views/Recipes';
+import SensorData from './views/SensorData';
 
 import WelcomeView from './views/WelcomeView';
 import { Logout } from "./components/Logout";
 
 // Import Custom Sidebar
 import CustomSidebarMenu from './components/CustomSidebarMenu';
+import Registration from './views/Registration';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -144,6 +146,70 @@ function thirdScreenStack({navigation}) {
   );
 }
 
+//settings page unfinished
+function fourthScreenStack({navigation}) {
+  return (
+  <AuthProvider>
+    <Stack.Navigator
+      initialRouteName="Registration"
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#32cd32', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="Registration"
+        component={Registration}
+        options={{
+          headerLeft: () => (
+            null
+          ),
+          drawerLockMode: 'locked-closed',
+          title: 'Registration', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  </AuthProvider>
+  );
+}
+
+//Sensor Data page unfinished
+function fifthScreenStack({navigation}) {
+  return (
+  <AuthProvider>
+    <Stack.Navigator
+      initialRouteName="SensorData"
+      screenOptions={{
+         headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
+        headerRight: () => (
+                 <Logout />
+         ),
+        headerStyle: {
+          backgroundColor: '#32cd32', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="Sensor Data"
+        component={SensorData}
+        options={{
+          title: 'SensorData', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  </AuthProvider>
+  );
+}
+
 function App() {
   return (
     <NavigationContainer>
@@ -153,7 +219,7 @@ function App() {
         <Drawer.Screen
           name="WelcomeView"
           options={{
-            drawerLabel: 'Welcome Page',
+            drawerLabel: 'Signin or Signup',
             drawerLockMode: 'locked-closed',
             // Section/Group Name
             groupName: 'Authentication',
@@ -180,6 +246,27 @@ function App() {
             activeTintColor: '#32cd32',
           }}
           component={thirdScreenStack}
+        />
+        <Drawer.Screen
+          name="SensorData"
+          options={{
+            drawerLabel: 'Sensor Data',
+            // Section/Group Name
+            groupName: 'Dashboard',
+            activeTintColor: '#32cd32',
+          }}
+          component={fifthScreenStack}
+        />
+        <Drawer.Screen
+          name="Registration"
+          options={{
+            drawerLockMode: 'locked-closed',
+            // drawerLabel: 'Registration',
+            // Section/Group Name
+            // groupName: 'Authentication',
+            activeTintColor: '#e91e63',
+          }}
+          component={fourthScreenStack}
         />
       </Drawer.Navigator>
     </NavigationContainer>

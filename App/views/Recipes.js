@@ -41,7 +41,7 @@ function Recipes() {
   return (
     
     <ScrollView> 
-      <Text> Recipe Searching *Chef's Kiss*</Text> 
+      <Text> Recipe Searching </Text> 
         <View style={styles.inputContainer}>
           <TextInput 
             style={styles.inputStyle}

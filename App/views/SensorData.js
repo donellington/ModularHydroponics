@@ -4,15 +4,14 @@
 import * as React from 'react';
 import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
 
-const ThirdPage = () => {
+const SensorData = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, padding: 16}}>
         <View style={styles.container}>
           <Text style={styles.textStyle}>
-            Settings 
+            Sensor Data 
             {'\n\n'}
-            This is the Third Page
           </Text>
         </View>
       </View>
@@ -42,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ThirdPage;
+export default SensorData;

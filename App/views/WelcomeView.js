@@ -12,7 +12,7 @@ const WelcomeView  = ({navigation}) => {
   const { user, signUp, signIn } = useAuth();
 
   useEffect(() => {
-    // If there is a user logged in, go to the Projects page.
+    // If there is a user logged in, go to the landing page.
     if (user != null) {
       navigation.navigate("Recipes");
     }
@@ -32,12 +32,7 @@ const WelcomeView  = ({navigation}) => {
   // The onPressSignUp method calls AuthProvider.signUp with the
   // email/password in state and then signs in.
   const onPressSignUp = async () => {
-    try {
-      await signUp(email, password);
-      signIn(email, password);
-    } catch (error) {
-      Alert.alert(`Failed to sign up: ${error.message}`);
-    }
+    navigation.navigate("Registration");
   };
 
   return (
