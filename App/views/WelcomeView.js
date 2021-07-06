@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, Alert } from "react-native";
 import { useAuth } from "../providers/AuthProvider";
 import styles from "../stylesheet";
-// import {navigation} from 'react-native-navigation';
-
-// export function WelcomeViews()
 
 const WelcomeView  = ({navigation}) => {
   const [email, setEmail] = useState("");
@@ -12,9 +9,9 @@ const WelcomeView  = ({navigation}) => {
   const { user, signUp, signIn } = useAuth();
 
   useEffect(() => {
-    // If there is a user logged in, go to the landing page.
+    // If there is a user logged in, go to the Dashboard page.
     if (user != null) {
-      navigation.navigate("Recipes");
+      navigation.navigate("Dashboard");
     }
   }, [user]);
 

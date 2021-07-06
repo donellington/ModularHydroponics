@@ -12,22 +12,11 @@ const Registration  = ({navigation}) => {
   const { user, signUp, signIn } = useAuth();
 
   useEffect(() => {
-    // If there is a user logged in, go to the Projects page.
+    // If there is a user logged in, go to the Welcome page.
     if (user != null) {
       navigation.navigate("WelcomeView");
     }
   }, [user]);
-
-  // // The onPressSignIn method calls AuthProvider.signIn with the
-  // // email/password in state.
-  // const onPressSignIn = async () => {
-  //   console.log("Press sign in");
-  //   try {
-  //     await signIn(email, password);
-  //   } catch (error) {
-  //     Alert.alert(`Failed to sign in: ${error.message}`);
-  //   }
-  // };
 
   // The onPressSignUp method calls AuthProvider.signUp with the
   // email/password in state and then signs in.
@@ -81,16 +70,11 @@ const Registration  = ({navigation}) => {
           secureTextEntry
         />
       </View>
-      {/* <Button 
-      onPress={onPressSignIn} 
-      title="Sign In"
-      color="#6b8e23"
-       /> */}
-      <Button 
-      onPress={onPressSignUp} 
-      title="Sign Up"
-      color="#6b8e23"
-       />
+        <Button 
+          onPress={onPressSignUp} 
+          title="Sign Up"
+          color="#6b8e23"
+        />
     </View>
   );
 }

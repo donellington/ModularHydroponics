@@ -1,8 +1,6 @@
 
-
-// React Navigation Drawer with Sectioned Menu Options & Footer
-// https://aboutreact.com/navigation-drawer-sidebar-menu-with-sectioned-menu-options-footer/
 // To run this app just cd app => npm install => npx react-native run-android
+
 import 'react-native-gesture-handler';
 import { AuthProvider } from "./providers/AuthProvider";
 
@@ -13,9 +11,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 
-import FirstPage from './views/FirstPage';
-import SecondPage from './views/SecondPage';
-import ThirdPage from './views/ThirdPage';
+import Dashboard from './views/Dashboard';
+// import SecondPage from './views/SecondPage';
+import Settings from './views/Settings';
 import Recipes from './views/Recipes';
 import SensorData from './views/SensorData';
 
@@ -53,7 +51,7 @@ const NavigationDrawerStructure = (props) => {
 };
 
 // welcome page login
-function firstScreenStack({navigation}) {
+function WelcomeStack({navigation}) {
   return (
     <AuthProvider>
     <Stack.Navigator initialRouteName="WelcomeView">
@@ -81,7 +79,7 @@ function firstScreenStack({navigation}) {
 }
 
 // recipe page navigation
-function secondScreenStack({navigation}) {
+function RecipeStack({navigation}) {
   return (
     <AuthProvider>
     <Stack.Navigator
@@ -114,11 +112,11 @@ function secondScreenStack({navigation}) {
 }
 
 //settings page unfinished
-function thirdScreenStack({navigation}) {
+function SettingsStack({navigation}) {
   return (
   <AuthProvider>
     <Stack.Navigator
-      initialRouteName="ThirdPage"
+      initialRouteName="Settings"
       screenOptions={{
         headerLeft: () => (
           <NavigationDrawerStructure navigationProps={navigation} />
@@ -135,8 +133,8 @@ function thirdScreenStack({navigation}) {
         },
       }}>
       <Stack.Screen
-        name="ThirdPage"
-        component={ThirdPage}
+        name="Settings"
+        component={Settings}
         options={{
           title: 'Settings', //Set Header Title
         }}
@@ -146,8 +144,8 @@ function thirdScreenStack({navigation}) {
   );
 }
 
-//settings page unfinished
-function fourthScreenStack({navigation}) {
+//Registration page unfinished
+function RegistrationStack({navigation}) {
   return (
   <AuthProvider>
     <Stack.Navigator
@@ -178,7 +176,7 @@ function fourthScreenStack({navigation}) {
 }
 
 //Sensor Data page unfinished
-function fifthScreenStack({navigation}) {
+function SensorDataStack({navigation}) {
   return (
   <AuthProvider>
     <Stack.Navigator
@@ -210,6 +208,40 @@ function fifthScreenStack({navigation}) {
   );
 }
 
+//Dashboard page unfinished
+function DashboardStack({navigation}) {
+  return (
+  <AuthProvider>
+    <Stack.Navigator
+      initialRouteName="Dashboard"
+      screenOptions={{
+         headerLeft: () => (
+          <NavigationDrawerStructure navigationProps={navigation} />
+        ),
+        headerRight: () => (
+                 <Logout />
+         ),
+        headerStyle: {
+          backgroundColor: '#32cd32', //Set Header color
+        },
+        headerTintColor: '#fff', //Set Header text color
+        headerTitleStyle: {
+          fontWeight: 'bold', //Set Header text style
+        },
+      }}>
+      <Stack.Screen
+        name="Dashboard"
+        component={Dashboard}
+        options={{
+          title: 'Dashboard', //Set Header Title
+        }}
+      />
+    </Stack.Navigator>
+  </AuthProvider>
+  );
+}
+
+//Main App
 function App() {
   return (
     <NavigationContainer>
@@ -225,7 +257,17 @@ function App() {
             groupName: 'Authentication',
             activeTintColor: '#e91e63',
           }}
-          component={firstScreenStack}
+          component={WelcomeStack}
+        />
+        <Drawer.Screen
+          name="Dashboard"
+          options={{
+            drawerLabel: 'Dashboard',
+            // Section/Group Name
+            groupName: 'Dashboard',
+            activeTintColor: '#e91e63',
+          }}
+          component={DashboardStack}
         />
         <Drawer.Screen
           name="Recipes"
@@ -235,17 +277,17 @@ function App() {
             groupName: 'Dashboard',
             activeTintColor: '#e91e63',
           }}
-          component={secondScreenStack}
+          component={RecipeStack}
         />
         <Drawer.Screen
-          name="ThirdPage"
+          name="Settings"
           options={{
             drawerLabel: 'Settings',
             // Section/Group Name
             groupName: 'Dashboard',
             activeTintColor: '#32cd32',
           }}
-          component={thirdScreenStack}
+          component={SettingsStack}
         />
         <Drawer.Screen
           name="SensorData"
@@ -255,8 +297,9 @@ function App() {
             groupName: 'Dashboard',
             activeTintColor: '#32cd32',
           }}
-          component={fifthScreenStack}
+          component={SensorDataStack}
         />
+ {/* Registration is intended to be accessed only from the login screen */}
         <Drawer.Screen
           name="Registration"
           options={{
@@ -266,7 +309,7 @@ function App() {
             // groupName: 'Authentication',
             activeTintColor: '#e91e63',
           }}
-          component={fourthScreenStack}
+          component={RegistrationStack}
         />
       </Drawer.Navigator>
     </NavigationContainer>

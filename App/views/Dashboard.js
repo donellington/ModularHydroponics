@@ -4,21 +4,20 @@
 import * as React from 'react';
 import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
 
-const FirstPage = () => {
+const Dashboard = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <View style={{flex: 1, padding: 16}}>
         <View style={styles.container}>
           <Text style={styles.textStyle}>
-            React Navigation Drawer with Sectioned Menu & Footer
             {'\n\n'}
-            This is the First Page
+            This is the Dashboard
           </Text>
         </View>
         <Text style={styles.footerHeading}>
-          React Navigation Drawer with Sectioned Menu
+          Intended to be landing page to help user navigate the app
         </Text>
-        <Text style={styles.footerText}>www.aboutreact.com</Text>
+        <Text style={styles.footerText}></Text>
       </View>
     </SafeAreaView>
   );
@@ -46,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FirstPage;
+export default Dashboard;

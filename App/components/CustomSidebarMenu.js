@@ -61,7 +61,7 @@ const CustomSidebarMenu = (props) => {
           textAlign: 'center',
           color: 'grey'
         }}>
-        www.aboutreact.com
+        Hydroponics Helper
       </Text>
     </SafeAreaView>
   );

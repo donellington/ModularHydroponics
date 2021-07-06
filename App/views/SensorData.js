@@ -13,6 +13,12 @@ const SensorData = () => {
             Sensor Data 
             {'\n\n'}
           </Text>
+        <Text style={styles.footerHeading}>
+          This page will host all important pod sensor data information
+        </Text>
+        <Text style={styles.footerText}>
+          Control of pod is next to be implemented
+        </Text>
         </View>
       </View>
     </SafeAreaView>

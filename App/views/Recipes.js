@@ -41,7 +41,6 @@ function Recipes() {
   return (
     
     <ScrollView> 
-      <Text> Recipe Searching </Text> 
         <View style={styles.inputContainer}>
           <TextInput 
             style={styles.inputStyle}
@@ -51,18 +50,17 @@ function Recipes() {
             autoComplete="off"
           />
         </View>
-        <Button 
-        title="Search"
-        onPress={onSubmit} 
-        value="search"
-        color="#6b8e23"
-        />
-        <View>   
+          <Button 
+            title="Search"
+            onPress={onSubmit} 
+            value="search"
+            color="#6b8e23"
+          />
+        <View style={styles.infoRecipeContainer}>   
           <Text>
             {recipes !== [] && recipes.map(recipe => <RecipeSearch recipe= {recipe}/>)}
           </Text>
         </View>
-        
   </ScrollView>
   );
 }
