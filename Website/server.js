@@ -3,11 +3,14 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require('path');
+const ejs = require('ejs');
 
 const users = require("./routes/api/users");
 const sensor = require("./routes/api/sensor");
 
 const app = express();
+
+app.set('view engine', 'ejs');
 
 // Bodyparser middleware
 app.use(
@@ -40,6 +43,11 @@ app.use("/api/users", users);
 
 // Routes
 app.use("/api/sensor", sensor);
+
+// Routes
+// app.get("/api/sensor", sensor);
+
+
 
 // Serve static assets if in production
 if(process.env.NODE_ENV === 'production') {
