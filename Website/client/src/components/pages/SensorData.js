@@ -1,53 +1,35 @@
-import React, { Component } from 'react';
-// import "./App.css";
+import React, { useEffect, useState } from 'react';
 
-var test_data = [];
+function SensorData() {
 
-class SensorData extends Component {
-  
-  state = {
-    repos: [],
-   isLoading: false
+  const [sdata, setSdata] = useState([]);
+
+  useEffect(() => {
+    fetchData();
+  });
+
+  const fetchData = async () => {
+    //fetch repos
+    fetch(`https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const data_array = [];
+      data_array[0] = data.sensors[0].temperature;
+      data_array[1] = data.sensors[0].humidity;
+      data_array[2] = data.sensors[0].waterlevel;
+      data_array[3] = data.sensors[0].lightvalue;
+      data_array[4] = data.sensors[0].tds;
+      data_array[5] = data.sensors[0].ph;
+      setSdata(data_array);
+    });
   };
-
-
-  componentDidMount() {
-    this.fetchData ();
-  }
-
-   fetchData = () => {
-
-       //show progress bar
-      this.setState({ isLoading: true });
-
-      //fetch repos
-      fetch(`https://secret-refuge-66400.herokuapp.com/api/sensor/getSensorData`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        test_data = data;
-        if (Array.isArray(data)) {
-          console.log(JSON.stringify(data));
-          this.setState({ repos: data ,
-                         isLoading: false});
-        } else {
-          this.setState({ repos: [],
-                          isLoading: false  
-                        });
-        }
-      });
-  };
-
-render(){
-  const {sensordata} = this.state;
-
-   return (
-  <div className='settings'>
-    <h1>Sensor Data</h1>
-    <h1>{test_data}</h1>
-  </div>
-  );
-}
+     return (
+      <div className='settings'>
+        <h1>Sensor Data</h1>
+        <h1>{sdata}</h1>
+      </div>
+    );
 }
 
 export default SensorData;
