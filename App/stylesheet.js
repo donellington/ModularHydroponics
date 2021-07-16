@@ -47,6 +47,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomRightRadius: 0
   },
+   fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   title: {
     flex: 1,
     flexWrap:'wrap',
@@ -108,6 +112,25 @@ const styles = StyleSheet.create({
   plusButton: {
     fontSize: 28,
     fontWeight: "400",
+  },
+  //  container: {
+  //   flex: 1,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  textStyle: {
+    fontSize: 18,
+    textAlign: 'center',
+  },
+  footerHeading: {
+    fontSize: 18,
+    textAlign: 'center',
+    color: 'grey',
+  },
+  footerText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: 'grey',
   },
 });
 

@@ -53,16 +53,24 @@ const WelcomeView  = ({navigation}) => {
           secureTextEntry
         />
       </View>
-      <Button 
-      onPress={onPressSignIn} 
-      title="Sign In"
-      color="#6b8e23"
-       />
-      <Button 
-      onPress={onPressSignUp} 
-      title="Sign Up"
-      color="#6b8e23"
-       />
+                <Text>
+            {'\n'}
+          </Text>
+      <View >
+        <Button 
+        onPress={onPressSignIn} 
+        title="Sign In"
+        color="#6b8e23"
+        />
+                  <Text>
+              {'\n'}
+            </Text>
+        <Button 
+        onPress={onPressSignUp} 
+        title="Sign Up"
+        color="#6b8e23"
+        />
+      </View>
     </View>
   );
 }

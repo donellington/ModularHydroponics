@@ -4,6 +4,8 @@
 import React, { useEffect, useState } from "react";
 // import styles from "../stylesheet";
 import { View, SafeAreaView, StyleSheet, Text, TextInput, Button, TouchableOpacity, ScrollView } from "react-native";
+import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from "react-native-table-component";
+
 
 // import * as React from 'react';
 // import {SafeAreaView, StyleSheet, View, Button, Text} from 'react-native';
@@ -11,6 +13,8 @@ import { View, SafeAreaView, StyleSheet, Text, TextInput, Button, TouchableOpaci
 const SensorData = () => {
 
   const [sdata, setSdata] = useState([]);
+
+  
 
   useEffect(() => {
     fetch('https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData')
@@ -27,25 +31,62 @@ const SensorData = () => {
       })
       .catch((error) => console.error(error));
   }, []);
-
+ 
+  const tableHead = ['Sensors', 'Readings'];
+    const tableData = [
+      ['Temperature', sdata[0]],
+      ['Humidity', sdata[1]],
+      ['Water Level', sdata[2]],
+      ['Light Level', sdata[3]],
+      ['tds', sdata[4]],
+      ['ph', sdata[5]],
+    ];
+  
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, padding: 16}}>
-        <View style={styles.container}>
-          <Text style={styles.textStyle}>
-            Sensor Data 
-            {'\n\n'}
-            {sdata[0]}
-            {sdata[1]}
-            {sdata[2]}
-            {sdata[3]}
-            {sdata[4]}
+    <View>
+        <Table borderStyle={{borderWidth: 1, borderColor: '#ffa1d2'}}>
+          <Row data={tableHead} style={styles.HeadStyle} textStyle={styles.TableText} />
+          <Rows data={tableData} textStyle={styles.TableText}/>
+        </Table>
+      </View>
+        <View style={styles.inputContainer}>
+          <TextInput 
+            style={styles.inputStyle}
+            placeholder="Set pH level"
+            // onChangeText={onChange}
+            // value={query}
+            autoComplete="off"
+          />
+          <Text>
+            {'\n'}
           </Text>
+           <TextInput 
+            style={styles.inputStyle}
+            placeholder="Set water level"
+            // onChangeText={onChange}
+            // value={query}
+            autoComplete="off"
+          />
+          <Text>
+            {'\n'}
+          </Text>
+           <TextInput 
+            style={styles.inputStyle}
+            placeholder="Set tds"
+            // onChangeText={onChange}
+            // value={query}
+            autoComplete="off"
+          />
+        </View>
+      
+      <View style={{flex: 1}}>
+        <View style={styles.container}>
         <Text style={styles.footerHeading}>
           This page will host all important pod sensor data information
         </Text>
         <Text style={styles.footerText}>
-          Control of pod is next to be implemented
+          Control of pod is next to be implemented as a button below sensor readings
         </Text>
         </View>
       </View>
@@ -63,17 +104,35 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
   },
+   inputContainer: {
+    padding: 15
+  },
   footerHeading: {
     fontSize: 18,
     textAlign: 'center',
     color: 'grey',
+  },
+  HeadStyle: { 
+    height: 50,
+    alignContent: "center",
+    backgroundColor: '#ffe0f0'
+  },
+  TableText: { 
+    margin: 10
   },
   footerText: {
     fontSize: 16,
     textAlign: 'center',
     color: 'grey',
   },
+    inputStyle: {
+    borderColor: "black",
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 2,
+  },
 });
 
 export default SensorData;
+
 

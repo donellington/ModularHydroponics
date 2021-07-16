@@ -2,44 +2,42 @@
 // https://aboutreact.com/navigation-drawer-sidebar-menu-with-sectioned-menu-options-footer/
 
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import styles from "../stylesheet";
+import { View, SafeAreaView, StyleSheet, Text, TextInput, Button, TouchableOpacity, ScrollView } from "react-native";
+
+// import { Delete } from "./components/DeleteAccount";
+import { DeleteAccount } from '../components/DeleteAccount';
 
 const Settings = () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, padding: 16}}>
-        <View style={styles.container}>
-          <Text style={styles.textStyle}>
-            Settings 
-            {'\n\n'}
-            This page will host extra features to manage the account and pods
+      <View>
+          <Text>
+            {'\n'}
           </Text>
+        <View style={styles.inputContainer}>
+          <TextInput 
+              style={styles.inputStyle}
+              placeholder="Change Password"
+              // onChangeText={onChange}
+              // value={query}
+              autoComplete="off"
+            />
+            <Text>
+              {'\n'}
+            </Text>
+          <Button 
+            title="Save"
+            // onPress={onSubmit} 
+            value="Save"
+            color="#6b8e23"
+          />
+            <Text>
+              {'\n'}
+            </Text>
+          <DeleteAccount></DeleteAccount>
         </View>
       </View>
-    </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  textStyle: {
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  footerHeading: {
-    fontSize: 18,
-    textAlign: 'center',
-    color: 'grey',
-  },
-  footerText: {
-    fontSize: 16,
-    textAlign: 'center',
-    color: 'grey',
-  },
-});
 
 export default Settings;
