@@ -9,27 +9,27 @@ const Schema = mongoose.Schema;
 // tds
 // ph
 const SensorSchema = new Schema({
-  Sensor1: {
+  temperature: {
     type: String,
     required: false
   },
-  Sensor2: {
+  humidity: {
     type: String,
     required: false
   },
-  Sensor3: {
+  waterlevel: {
     type: String,
     required: false
   },
-  Sensor4: {
+  lightvalue: {
     type: String,
     required: false
   },
-  Sensor5: {
+  tds: {
     type: String,
     required: false
   },
-  Sensor6: {
+  ph: {
     type: String,
     required: false
   },
