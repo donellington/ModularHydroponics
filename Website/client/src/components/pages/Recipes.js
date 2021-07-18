@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../Products.css";
+import "./Products.css";
 import Axios from "axios";
 import { v4 as uuidv4 } from "uuid";
-import RecipeSearch from "../RecipeSearch";
-import Alert from "../Alert";
+import RecipeSearch from "./RecipeSearch";
+import Alert from "./Alert";
 // import "./App.css";
 
 

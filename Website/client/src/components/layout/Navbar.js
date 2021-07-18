@@ -1,44 +1,104 @@
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
+import React, { useState, useEffect } from 'react';
+import { Button } from '../pages/Button';
 import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
 import './Navbar.css';
-import { IconContext } from 'react-icons';
 
 function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
+  const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
 
-  const showSidebar = () => setSidebar(!sidebar);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+  window.addEventListener('resize', showButton);
 
   return (
     <>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
+      <nav className='navbar'>
+        <div className='navbar-container'>
+          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+            Hydroponics Home
+            {/* <i class='fab fa-typo3' /> */}
+            <i class="fas fa-leaf"></i>
           </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars'>
-                <AiIcons.AiOutlineClose />
+          <div className='menu-icon' onClick={handleClick}>
+            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          </div>
+          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+            <li className='nav-item'>
+              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+                Home
               </Link>
             </li>
-            {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
+            <li className='nav-item'>
+              <Link
+                to='/login'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Login
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/register'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Register
+              </Link>
+            </li>
+             <li className='nav-item'>
+              <Link
+                to='/Dashboard'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Dashboard
+              </Link>
+            </li>
+           <li className='nav-item'>
+              <Link
+                to='/Recipes'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Recipes
+              </Link>
+            </li>
+             <li className='nav-item'>
+              <Link
+                to='/Pods'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Pods
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/SensorData'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Sensor Data
+              </Link>
+            </li>
           </ul>
-        </nav>
-      </IconContext.Provider>
+        </div>
+      </nav>
     </>
   );
 }
