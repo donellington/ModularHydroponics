@@ -9,7 +9,7 @@ import styles from "../stylesheet";
 
 const RecipeSearch = ({ recipe }) => {
   const [show, setShow] = useState(false);
-  const { label, image, url, ingredients } = recipe.recipe;
+  const { label, image, url } = recipe.recipe;
   
   return (
   <View style={styles.recipeContainer}>

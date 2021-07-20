@@ -4,11 +4,11 @@ import { useAuth } from "../providers/AuthProvider";
 import styles from "../stylesheet";
 
 
+
 const Registration  = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [name, setName] = useState("");
   const { user, signUp, signIn } = useAuth();
 
   useEffect(() => {
@@ -31,26 +31,22 @@ const Registration  = ({navigation}) => {
     }
   };
 
+    const goBack = () => {
+    
+     navigation.navigate("WelcomeView");
+  };
+
   return (
     <View>
       <Text>Registration:</Text>
       <View style={styles.inputContainer}>
         <TextInput
-          onChangeText={setFirstName}
-          value={firstName}
-          placeholder="First Name"
+          onChangeText={setName}
+          value={name}
+          placeholder="Name"
           style={styles.inputStyle}
           autoCapitalize="none"
         />
-      </View>
-      <View style={styles.inputContainer}>
-        <TextInput
-          onChangeText={setLastName}
-          value={lastName}
-          placeholder="Last Name"
-          style={styles.inputStyle}
-          autoCapitalize="none"
-        /> 
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -70,11 +66,19 @@ const Registration  = ({navigation}) => {
           secureTextEntry
         />
       </View>
+      <View>
         <Button 
+          type = "outline"
           onPress={onPressSignUp} 
           title="Sign Up"
           color="#6b8e23"
         />
+         <Button 
+          onPress={goBack} 
+          title="Back"
+          color="#6b8e23"
+        />
+      </View>
     </View>
   );
 }

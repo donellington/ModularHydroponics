@@ -19,11 +19,10 @@ class Dashboard extends Component {
             <h4>
               <b>Hello,</b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
-                You are logged in{" "}
-                <span style={{ fontFamily: "monospace" }}>MERN</span> app 👏
+                You are logged in to Hydroponics Guider. If you wish to access your garden pod's sensor data or anything simply open the sidebar menu on the top right{" "}
               </p>
             </h4>
-            <button
+            {/* <button
               style={{
                 width: "150px",
                 borderRadius: "3px",
@@ -34,7 +33,7 @@ class Dashboard extends Component {
               className="btn btn-large waves-effect waves-light hoverable blue accent-3"
             >
               Logout
-            </button>
+            </button> */}
           </div>
         </div>
       </div>

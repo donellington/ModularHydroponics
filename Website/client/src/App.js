@@ -56,7 +56,7 @@ class App extends Component {
               <PrivateRoute path='/Settings' exact component={Settings} />
               <PrivateRoute path='/SensorData' component={SensorData} />
               <PrivateRoute path='/Recipes' component={Recipes} />
-              <PrivateRoute path='/Pods' component={Pods} />
+              {/* <PrivateRoute path='/Pods' component={Pods} /> */}
             </Switch>
           </div>
         </Router>

@@ -41,6 +41,9 @@ function Recipes() {
   return (
     
     <ScrollView> 
+        <View>
+          <Text style={styles.title}>Plan ahead with your plant! Type your ingredient below and find delicious recipes to make.</Text>
+        </View>
         <View style={styles.inputContainer}>
           <TextInput 
             style={styles.inputStyle}

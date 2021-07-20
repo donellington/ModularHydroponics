@@ -5,8 +5,7 @@ import * as React from 'react';
 import styles from "../stylesheet";
 import { View, SafeAreaView, StyleSheet, Text, TextInput, Button, TouchableOpacity, ScrollView } from "react-native";
 
-// import { Delete } from "./components/DeleteAccount";
-import { DeleteAccount } from '../components/DeleteAccount';
+// import { DeleteAccount } from '../components/DeleteAccount';
 
 const Settings = () => {
   return (
@@ -25,16 +24,6 @@ const Settings = () => {
             <Text>
               {'\n'}
             </Text>
-          <Button 
-            title="Save"
-            // onPress={onSubmit} 
-            value="Save"
-            color="#6b8e23"
-          />
-            <Text>
-              {'\n'}
-            </Text>
-          <DeleteAccount></DeleteAccount>
         </View>
       </View>
   );

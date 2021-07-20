@@ -42,16 +42,16 @@ function Navbar() {
                 Home
               </Link>
             </li>
-            <li className='nav-item'>
+            {/* <li className='nav-item'>
               <Link
-                to='/login'
+                to='/Landing'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Login
+                Home
               </Link>
-            </li>
-            <li className='nav-item'>
+            </li> */}
+            {/* <li className='nav-item'>
               <Link
                 to='/register'
                 className='nav-links'
@@ -59,7 +59,7 @@ function Navbar() {
               >
                 Register
               </Link>
-            </li>
+            </li> */}
              <li className='nav-item'>
               <Link
                 to='/Dashboard'
@@ -67,6 +67,15 @@ function Navbar() {
                 onClick={closeMobileMenu}
               >
                 Dashboard
+              </Link>
+            </li>
+            <li className='nav-item'>
+              <Link
+                to='/Settings'
+                className='nav-links'
+                onClick={closeMobileMenu}
+              >
+                Settings
               </Link>
             </li>
            <li className='nav-item'>
@@ -78,15 +87,15 @@ function Navbar() {
                 Recipes
               </Link>
             </li>
-             <li className='nav-item'>
+             {/* <li className='nav-item'>
               <Link
                 to='/Pods'
                 className='nav-links'
                 onClick={closeMobileMenu}
               >
-                Pods
+                Pod Profiles
               </Link>
-            </li>
+            </li> */}
             <li className='nav-item'>
               <Link
                 to='/SensorData'

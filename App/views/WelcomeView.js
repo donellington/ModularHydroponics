@@ -18,11 +18,11 @@ const WelcomeView  = ({navigation}) => {
   // The onPressSignIn method calls AuthProvider.signIn with the
   // email/password in state.
   const onPressSignIn = async () => {
-    console.log("Press sign in");
+    console.log("Press Login ");
     try {
       await signIn(email, password);
     } catch (error) {
-      Alert.alert(`Failed to sign in: ${error.message}`);
+      Alert.alert(`Failed to Login: ${error.message}`);
     }
   };
 
@@ -34,7 +34,7 @@ const WelcomeView  = ({navigation}) => {
 
   return (
     <View>
-      <Text>Signup or Sign in:</Text>
+      {/* <Text>Signup or Sign in:</Text> */}
       <View style={styles.inputContainer}>
         <TextInput
           onChangeText={setEmail}
@@ -59,15 +59,15 @@ const WelcomeView  = ({navigation}) => {
       <View >
         <Button 
         onPress={onPressSignIn} 
-        title="Sign In"
+        title="Login"
         color="#6b8e23"
         />
-                  <Text>
+            <Text>
               {'\n'}
             </Text>
         <Button 
         onPress={onPressSignUp} 
-        title="Sign Up"
+        title="Register"
         color="#6b8e23"
         />
       </View>

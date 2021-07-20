@@ -59,8 +59,8 @@ function WelcomeStack({navigation}) {
         name="WelcomeView"
         component={WelcomeView}
         options={{
-          drawerLockMode: 'locked-closed',
-          title: 'WelcomeView', //Set Header Title
+          drawerLockMode: "locked-closed",
+          title: 'Login', //Set Header Title
           headerLeft: () => (
             null
           ),
@@ -180,7 +180,7 @@ function SensorDataStack({navigation}) {
   return (
   <AuthProvider>
     <Stack.Navigator
-      initialRouteName="SensorData"
+      initialRouteName="Sensor Data"
       screenOptions={{
          headerLeft: () => (
           <NavigationDrawerStructure navigationProps={navigation} />
@@ -233,7 +233,7 @@ function DashboardStack({navigation}) {
         name="Dashboard"
         component={Dashboard}
         options={{
-          title: 'Dashboard', //Set Header Title
+          title: 'Welcome Page', //Set Header Title
         }}
       />
     </Stack.Navigator>
@@ -251,7 +251,7 @@ function App() {
         <Drawer.Screen
           name="WelcomeView"
           options={{
-            drawerLabel: 'Signin or Signup',
+            drawerLabel: 'Login or Register',
             drawerLockMode: 'locked-closed',
             // Section/Group Name
             groupName: 'Authentication',
@@ -262,7 +262,7 @@ function App() {
         <Drawer.Screen
           name="Dashboard"
           options={{
-            drawerLabel: 'Dashboard',
+            drawerLabel: 'Welcome Page',
             // Section/Group Name
             groupName: 'Dashboard',
             activeTintColor: '#e91e63',
@@ -279,7 +279,7 @@ function App() {
           }}
           component={RecipeStack}
         />
-        <Drawer.Screen
+        {/* <Drawer.Screen
           name="Settings"
           options={{
             drawerLabel: 'Settings',
@@ -288,7 +288,7 @@ function App() {
             activeTintColor: '#32cd32',
           }}
           component={SettingsStack}
-        />
+        /> */}
         <Drawer.Screen
           name="SensorData"
           options={{

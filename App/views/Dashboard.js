@@ -7,17 +7,19 @@ import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
 const Dashboard = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={{flex: 1, padding: 16}}>
+      <View style={{flex: 1, padding: 20}}>
         <View style={styles.container}>
           <Text style={styles.textStyle}>
             {'\n\n'}
-            This is the Dashboard
+            Welcome to Hydroponics Helper!
           </Text>
         </View>
         <Text style={styles.footerHeading}>
-          Intended to be landing page to help user navigate the app
+          This is the streamlined version of our website. Use this app to interact with our project Stem 'n' Leaf. 
         </Text>
-        <Text style={styles.footerText}></Text>
+        <Text style={styles.footerText}>
+          Our mobile app is designed to assist you in the growth on your plant in our garden pod. Use the sidemenu tab on the top left or swipe right to navigate the pages.
+        </Text>
       </View>
     </SafeAreaView>
   );
@@ -30,11 +32,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textStyle: {
-    fontSize: 18,
+    fontSize: 28,
     textAlign: 'center',
   },
   footerHeading: {
-    fontSize: 18,
+    fontSize: 22,
     textAlign: 'center',
     color: 'grey',
   },
