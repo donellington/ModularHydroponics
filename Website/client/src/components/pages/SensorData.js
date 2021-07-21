@@ -1,33 +1,29 @@
-import React, { useEffect, useState, Text } from 'react';
+import React, { useEffect, useState, Text } from "react";
 // import "bootstrap/dist/css/bootstrap.css";
 import "react-bootstrap-table-next/dist/react-bootstrap-table2.min.css";
 import BootstrapTable from "react-bootstrap-table-next";
-import InputGroup from 'react-bootstrap/InputGroup';
+import InputGroup from "react-bootstrap/InputGroup";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-
 
 function PropChangeWatch({ a, b }) {
   useEffect(() => {
     console.log("pH changed to", a);
     console.log("tds changed to", b);
-
   }, [a]);
 
-  return (
-    <div>
-    </div>
-  );
+  return <div></div>;
 }
 
 function SensorData() {
-
   const [sdata, setSdata] = useState([]);
-  const [phField, setPH] = useState('');
-  const [tdsField, setTDS] = useState('');
+  const [phField, setPH] = useState("");
+  const [tdsField, setTDS] = useState("");
 
   useEffect(() => {
-    fetch('https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData')
+    fetch(
+      "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData"
+    )
       .then((response) => response.json())
       .then((data) => {
         const data_array = [];
@@ -41,40 +37,40 @@ function SensorData() {
       })
       .catch((error) => console.error(error));
   }, []);
-  
+
   const tableData = [
-    { name: 'Temperature', value: sdata[0]},
-    { name: 'Humidity', value: sdata[1]},
-    { name: 'Water Level', value: sdata[2]},
-    { name: 'Light Level', value: sdata[3]},
-    { name: 'tds', value: sdata[4]},
-    { name: 'ph', value: sdata[5]},
+    { name: "Temperature", value: sdata[0] },
+    { name: "Humidity", value: sdata[1] },
+    { name: "Water Level", value: sdata[2] },
+    { name: "Light Level", value: sdata[3] },
+    { name: "tds", value: sdata[4] },
+    { name: "ph", value: sdata[5] },
   ];
 
   const tableHead = [
-    { 
+    {
       dataField: "name",
-      text: 'Sensors', 
-      sort: true
+      text: "Sensors",
+      sort: true,
     },
     {
       dataField: "value",
-      text: 'Readings'
-    }
+      text: "Readings",
+    },
   ];
 
   const titleStyle = {
     marginLeft: "20px",
     marginRight: "20px",
-    padding: "10px"
-  }
+    padding: "10px",
+  };
 
   const tableStyle = {
     fontSize: 15,
-  }
-  
-    return (
-      <div style={titleStyle}>
+  };
+
+  return (
+    <div style={titleStyle}>
       <h1>Sensor Data</h1>
       <div style={tableStyle}>
         <BootstrapTable
@@ -84,29 +80,30 @@ function SensorData() {
           bordered
           keyField="name"
           data={tableData}
-          columns={tableHead}/>
+          columns={tableHead}
+        />
       </div>
       <br></br>
       <div>
-      <form>
-        <h2>User Adjustments</h2>
-        <input 
-          id="setpH" 
-          name="setpH" 
-          type="text" 
-          />
-        <label style={tableStyle} htmlFor="setpH">Set desired pH Level</label>
+        <form>
+          <h2>User Adjustments</h2>
+          <input id="setpH" name="setpH" type="text" />
+          <label style={tableStyle} htmlFor="setpH">
+            Set desired pH Level
+          </label>
 
-        <input id="setTDS" name="setTDS" type="text" />
-        <label style={tableStyle} htmlFor="setTDS">Set desired tds Level</label>
-        <br></br>
-        <br></br>
-        <button style={tableStyle}>Set Adjustments</button>
-        <PropChangeWatch a={phField} b={tdsField} />
-      </form>
+          <input id="setTDS" name="setTDS" type="text" />
+          <label style={tableStyle} htmlFor="setTDS">
+            Set desired tds Level
+          </label>
+          <br></br>
+          <br></br>
+          <button style={tableStyle}>Set Adjustments</button>
+          <PropChangeWatch a={phField} b={tdsField} />
+        </form>
       </div>
-      </div>
-    );
+    </div>
+  );
 }
 
 export default SensorData;

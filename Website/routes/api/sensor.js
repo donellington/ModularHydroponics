@@ -13,22 +13,23 @@ const SensorData = require("../../models/Sensor");
 
 router.post("/sensor", (req, res) => {
   const newSensorData = new SensorData({
-    Sensor1: req.body.temperature, // temperature
-    Sensor2: req.body.humidity, // humidity
-    Sensor3: req.body.waterlevel, // water_level
-    Sensor4: req.body.lightvalue, // light_value 
-    Sensor5: req.body.tds, // tds
-    Sensor6: req.body.ph  // pH
+    temperature: req.body.temperature, // temperature
+    humidity: req.body.humidity, // humidity
+    waterlevel: req.body.waterlevel, // water_level
+    lightvalue: req.body.lightvalue, // light_value
+    tds: req.body.tds, // tds
+    ph: req.body.ph, // pH
   });
-  newSensorData.save().then(res.json({ data: "All input sensor data received" }));
+  newSensorData
+    .save()
+    .then(res.json({ data: "All input sensor data received" }));
 });
 
-router.get("/getSensorData", function(req, res) {
-        SensorData.find(function(err, data) {
-            if (err)
-                res.send(err);
-            res.json(data);
-        });
-    });
+router.get("/getSensorData", function (req, res) {
+  SensorData.find(function (err, data) {
+    if (err) res.send(err);
+    res.json(data);
+  });
+});
 
 module.exports = router;
