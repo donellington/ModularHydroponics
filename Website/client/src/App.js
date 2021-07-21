@@ -13,11 +13,11 @@ import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/pages/Dashboard";
-import Settings from './components/pages/Settings';
-import SensorData from './components/pages/SensorData';
-import Recipes from './components/pages/Recipes';
-import Pods from './components/pages/Pods';
-import AboutUs from './components/pages/AboutUs';
+import Settings from "./components/pages/Settings";
+import SensorData from "./components/pages/SensorData";
+import Recipes from "./components/pages/Recipes";
+import Pods from "./components/pages/Pods";
+import AboutUs from "./components/pages/AboutUs";
 
 import "./App.css";
 
@@ -53,9 +53,9 @@ class App extends Component {
             <Route exact path="/aboutus" component={AboutUs} />
             <Switch>
               <PrivateRoute exact path="/Dashboard" component={Dashboard} />
-              <PrivateRoute path='/Settings' exact component={Settings} />
-              <PrivateRoute path='/SensorData' component={SensorData} />
-              <PrivateRoute path='/Recipes' component={Recipes} />
+              <PrivateRoute path="/Settings" exact component={Settings} />
+              <PrivateRoute path="/SensorData" component={SensorData} />
+              <PrivateRoute path="/Recipes" component={Recipes} />
               {/* <PrivateRoute path='/Pods' component={Pods} /> */}
             </Switch>
           </div>

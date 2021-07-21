@@ -10,11 +10,20 @@ import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from "react-native-ta
 // import * as React from 'react';
 // import {SafeAreaView, StyleSheet, View, Button, Text} from 'react-native';
 
+const PropChangeWatch = ({ a, b }) => {
+  useEffect(() => {
+    console.log("pH changed to", a);
+    console.log("tds changed to", b);
+
+  }, [a]);
+
+}
+
 const SensorData = () => {
 
   const [sdata, setSdata] = useState([]);
 
-  
+
 
   useEffect(() => {
     fetch('https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData')

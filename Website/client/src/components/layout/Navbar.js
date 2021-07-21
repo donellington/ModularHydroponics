@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Button } from '../pages/Button';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React, { useState, useEffect } from "react";
+import { Button } from "../pages/Button";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -22,23 +22,23 @@ function Navbar() {
     showButton();
   }, []);
 
-  window.addEventListener('resize', showButton);
+  window.addEventListener("resize", showButton);
 
   return (
     <>
-      <nav className='navbar'>
-        <div className='navbar-container'>
-          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            Hydroponics Home
+      <nav className="navbar">
+        <div className="navbar-container">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            Hydroponics Guider
             {/* <i class='fab fa-typo3' /> */}
             <i class="fas fa-leaf"></i>
           </Link>
-          <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+          <div className="menu-icon" onClick={handleClick}>
+            <i className={click ? "fas fa-times" : "fas fa-bars"} />
           </div>
-          <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-              <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+          <ul className={click ? "nav-menu active" : "nav-menu"}>
+            <li className="nav-item">
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
@@ -60,49 +60,49 @@ function Navbar() {
                 Register
               </Link>
             </li> */}
-             <li className='nav-item'>
+            <li className="nav-item">
               <Link
-                to='/Dashboard'
-                className='nav-links'
+                to="/Dashboard"
+                className="nav-links"
                 onClick={closeMobileMenu}
               >
                 Dashboard
               </Link>
             </li>
-            <li className='nav-item'>
+            <li className="nav-item">
               <Link
-                to='/Settings'
-                className='nav-links'
+                to="/Settings"
+                className="nav-links"
                 onClick={closeMobileMenu}
               >
                 Settings
               </Link>
             </li>
-           <li className='nav-item'>
+            <li className="nav-item">
               <Link
-                to='/Recipes'
-                className='nav-links'
+                to="/Recipes"
+                className="nav-links"
                 onClick={closeMobileMenu}
               >
                 Recipes
               </Link>
             </li>
-             {/* <li className='nav-item'>
+            <li className="nav-item">
               <Link
-                to='/Pods'
-                className='nav-links'
-                onClick={closeMobileMenu}
-              >
-                Pod Profiles
-              </Link>
-            </li> */}
-            <li className='nav-item'>
-              <Link
-                to='/SensorData'
-                className='nav-links'
+                to="/SensorData"
+                className="nav-links"
                 onClick={closeMobileMenu}
               >
                 Sensor Data
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                to="/aboutus"
+                className="nav-links"
+                onClick={closeMobileMenu}
+              >
+                About Us
               </Link>
             </li>
           </ul>

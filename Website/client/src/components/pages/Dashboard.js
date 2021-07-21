@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 
 class Dashboard extends Component {
-  onLogoutClick = e => {
+  onLogoutClick = (e) => {
     e.preventDefault();
     this.props.logoutUser();
   };
@@ -17,9 +17,11 @@ class Dashboard extends Component {
         <div className="row">
           <div className="landing-copy col s12 center-align">
             <h4>
-              <b>Hello,</b> {user.name.split(" ")[0]}
+              <b>Welcome to Hydroponics Guider, </b> {user.name.split(" ")[0]}
               <p className="flow-text grey-text text-darken-1">
-                You are logged in to Hydroponics Guider. If you wish to access your garden pod's sensor data or anything simply open the sidebar menu on the top right{" "}
+                You are logged in to Hydroponics Guider. If you wish to access
+                your garden pod's sensor data or anything simply open the
+                sidebar menu on the top right{" "}
               </p>
             </h4>
             {/* <button
@@ -43,14 +45,11 @@ class Dashboard extends Component {
 
 Dashboard.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
 };
 
-const mapStateToProps = state => ({
-  auth: state.auth
+const mapStateToProps = (state) => ({
+  auth: state.auth,
 });
 
-export default connect(
-  mapStateToProps,
-  { logoutUser }
-)(Dashboard);
+export default connect(mapStateToProps, { logoutUser })(Dashboard);

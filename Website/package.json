@@ -19,6 +19,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "bootstrap": "^5.0.2",
     "concurrently": "^4.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
@@ -27,6 +28,9 @@
     "mongoose": "^5.3.11",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "react-bootstrap": "^1.6.1",
+    "react-bootstrap-table-next": "^4.0.3",
+    "react-hook-form": "^7.11.1",
     "react-icons": "^4.2.0",
     "validator": "^10.9.0"
   }
