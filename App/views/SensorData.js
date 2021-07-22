@@ -52,7 +52,7 @@ const SensorData = () => {
     ["Temperature (fahrenheit)", sdata[0]],
     ["Humidity (%)", sdata[1]],
     ["Water Level (inches)", sdata[2]],
-    ["Light Level (on= 1, off = 0)", sdata[3]],
+    ["Light Level (on = 1, off = 0)", sdata[3]],
     ["Total Dissolved Solids (mg/l)", sdata[4]],
     ["ph (acidic 0 - basic 14)", sdata[5]],
   ];
