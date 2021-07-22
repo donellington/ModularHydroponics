@@ -85,7 +85,7 @@ function SensorData() {
       </div>
       <br></br>
       <div>
-        <form>
+        {/* <form>
           <h2>User Adjustments</h2>
           <input id="setpH" name="setpH" type="text" />
           <label style={tableStyle} htmlFor="setpH">
@@ -100,7 +100,7 @@ function SensorData() {
           <br></br>
           <button style={tableStyle}>Set Adjustments</button>
           <PropChangeWatch a={phField} b={tdsField} />
-        </form>
+        </form> */}
       </div>
     </div>
   );
