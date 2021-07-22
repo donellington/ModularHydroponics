@@ -6,14 +6,14 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-function PropChangeWatch({ a, b }) {
-  useEffect(() => {
-    console.log("pH changed to", a);
-    console.log("tds changed to", b);
-  }, [a]);
+// function PropChangeWatch({ a, b }) {
+//   useEffect(() => {
+//     console.log("pH changed to", a);
+//     console.log("tds changed to", b);
+//   }, [a]);
 
-  return <div></div>;
-}
+//   return <div></div>;
+// }
 
 function SensorData() {
   const [sdata, setSdata] = useState([]);
