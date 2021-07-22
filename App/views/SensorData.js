@@ -3,30 +3,36 @@
 
 import React, { useEffect, useState } from "react";
 // import styles from "../stylesheet";
-import { View, SafeAreaView, StyleSheet, Text, TextInput, Button, TouchableOpacity, ScrollView } from "react-native";
-import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from "react-native-table-component";
-
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TextInput,
+  Button,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
+import {
+  Table,
+  TableWrapper,
+  Row,
+  Rows,
+  Col,
+  Cols,
+  Cell,
+} from "react-native-table-component";
 
 // import * as React from 'react';
 // import {SafeAreaView, StyleSheet, View, Button, Text} from 'react-native';
 
-const PropChangeWatch = ({ a, b }) => {
-  useEffect(() => {
-    console.log("pH changed to", a);
-    console.log("tds changed to", b);
-
-  }, [a]);
-
-}
-
 const SensorData = () => {
-
   const [sdata, setSdata] = useState([]);
 
-
-
   useEffect(() => {
-    fetch('https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData')
+    fetch(
+      "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData"
+    )
       .then((response) => response.json())
       .then((data) => {
         const data_array = [];
@@ -40,26 +46,30 @@ const SensorData = () => {
       })
       .catch((error) => console.error(error));
   }, []);
- 
-  const tableHead = ['Sensors', 'Readings'];
-    const tableData = [
-      ['Temperature', sdata[0]],
-      ['Humidity', sdata[1]],
-      ['Water Level', sdata[2]],
-      ['Light Level', sdata[3]],
-      ['tds', sdata[4]],
-      ['ph', sdata[5]],
-    ];
-  
+
+  const tableHead = ["Sensors", "Data"];
+  const tableData = [
+    ["Temperature (fahrenheit)", sdata[0]],
+    ["Humidity (%)", sdata[1]],
+    ["Water Level (inches)", sdata[2]],
+    ["Light Level (on= 1, off = 0)", sdata[3]],
+    ["Total Dissolved Solids (mg/l)", sdata[4]],
+    ["ph (acidic 0 - basic 14)", sdata[5]],
+  ];
+
   return (
-    <SafeAreaView style={{flex: 1}}>
-    <View>
-        <Table borderStyle={{borderWidth: 1, borderColor: '#ffa1d2'}}>
-          <Row data={tableHead} style={styles.HeadStyle} textStyle={styles.TableText} />
-          <Rows data={tableData} textStyle={styles.TableText}/>
+    <SafeAreaView style={{ flex: 1 }}>
+      <View>
+        <Table borderStyle={{ borderWidth: 1, borderColor: "#ffa1d2" }}>
+          <Row
+            data={tableHead}
+            style={styles.HeadStyle}
+            textStyle={styles.TableText}
+          />
+          <Rows data={tableData} textStyle={styles.TableText} />
         </Table>
       </View>
-        <View style={styles.inputContainer}>
+      {/* <View style={styles.inputContainer}>
           <TextInput 
             style={styles.inputStyle}
             placeholder="Set pH level"
@@ -98,7 +108,7 @@ const SensorData = () => {
           Control of pod is next to be implemented as a button below sensor readings
         </Text>
         </View>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 };
@@ -106,35 +116,35 @@ const SensorData = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   textStyle: {
     fontSize: 18,
-    textAlign: 'center',
+    textAlign: "center",
   },
-   inputContainer: {
-    padding: 15
+  inputContainer: {
+    padding: 15,
   },
   footerHeading: {
     fontSize: 18,
-    textAlign: 'center',
-    color: 'grey',
+    textAlign: "center",
+    color: "grey",
   },
-  HeadStyle: { 
+  HeadStyle: {
     height: 50,
     alignContent: "center",
-    backgroundColor: '#ffe0f0'
+    backgroundColor: "#ffe0f0",
   },
-  TableText: { 
-    margin: 10
+  TableText: {
+    margin: 10,
   },
   footerText: {
     fontSize: 16,
-    textAlign: 'center',
-    color: 'grey',
+    textAlign: "center",
+    color: "grey",
   },
-    inputStyle: {
+  inputStyle: {
     borderColor: "black",
     borderWidth: 1,
     padding: 10,
@@ -143,5 +153,3 @@ const styles = StyleSheet.create({
 });
 
 export default SensorData;
-
-
