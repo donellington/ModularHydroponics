@@ -6,15 +6,6 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 
-// function PropChangeWatch({ a, b }) {
-//   useEffect(() => {
-//     console.log("pH changed to", a);
-//     console.log("tds changed to", b);
-//   }, [a]);
-
-//   return <div></div>;
-// }
-
 function SensorData() {
   const [sdata, setSdata] = useState([]);
   const [phField, setPH] = useState("");
@@ -41,7 +32,7 @@ function SensorData() {
   const tableData = [
     { name: "Temperature (fahrenheit)", value: sdata[0] },
     { name: "Humidity (%)", value: sdata[1] },
-    { name: "Water Level (inches)", value: sdata[2] },
+    { name: "Water Level (FULL = 1, EMPTY = 0)", value: sdata[2] },
     { name: "Light Level (on = 1, off = 0)", value: sdata[3] },
     { name: "Total Dissolved Solids (mg/l)", value: sdata[4] },
     { name: "ph (acidic 0 - basic 14)", value: sdata[5] },
