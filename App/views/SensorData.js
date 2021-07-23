@@ -29,6 +29,10 @@ import {
 const SensorData = () => {
   const [sdata, setSdata] = useState([]);
 
+  const refreshPage = () => {
+    window.location.reload(false);
+  };
+
   useEffect(() => {
     fetch(
       "https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/appwebsite-uirte/service/sensorData/incoming_webhook/sensorData"
@@ -51,7 +55,7 @@ const SensorData = () => {
   const tableData = [
     ["Temperature (fahrenheit)", sdata[0]],
     ["Humidity (%)", sdata[1]],
-    ["Water Level (inches)", sdata[2]],
+    ["Water Level (FULL = 1, EMPTY= 0)", sdata[2]],
     ["Light Level (on = 1, off = 0)", sdata[3]],
     ["Total Dissolved Solids (mg/l)", sdata[4]],
     ["ph (acidic 0 - basic 14)", sdata[5]],
@@ -69,46 +73,6 @@ const SensorData = () => {
           <Rows data={tableData} textStyle={styles.TableText} />
         </Table>
       </View>
-      {/* <View style={styles.inputContainer}>
-          <TextInput 
-            style={styles.inputStyle}
-            placeholder="Set pH level"
-            // onChangeText={onChange}
-            // value={query}
-            autoComplete="off"
-          />
-          <Text>
-            {'\n'}
-          </Text>
-           <TextInput 
-            style={styles.inputStyle}
-            placeholder="Set water level"
-            // onChangeText={onChange}
-            // value={query}
-            autoComplete="off"
-          />
-          <Text>
-            {'\n'}
-          </Text>
-           <TextInput 
-            style={styles.inputStyle}
-            placeholder="Set tds"
-            // onChangeText={onChange}
-            // value={query}
-            autoComplete="off"
-          />
-        </View>
-      
-      <View style={{flex: 1}}>
-        <View style={styles.container}>
-        <Text style={styles.footerHeading}>
-          This page will host all important pod sensor data information
-        </Text>
-        <Text style={styles.footerText}>
-          Control of pod is next to be implemented as a button below sensor readings
-        </Text>
-        </View>
-      </View> */}
     </SafeAreaView>
   );
 };
